@@ -269,7 +269,7 @@ class GetEntities extends ApiWikibase {
 			foreach ( $params['languages'] as $languageCode ) {
 				// $languageCode is already filtered as valid ones
 				$languages[$languageCode] = $this->languageFallbackChainFactory
-					->newFromUserAndLanguageCode( ( clone $this->getContext()->getUser() ), $languageCode );
+					->newFromContextAndLanguageCode( $this, $languageCode );
 			}
 		} else {
 			$languages = $params['languages'];
