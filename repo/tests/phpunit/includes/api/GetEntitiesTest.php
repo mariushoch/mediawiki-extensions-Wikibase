@@ -35,12 +35,12 @@ class GetEntitiesTest extends WikibaseApiTestCase {
 			$this->initTestEntities( self::$usedHandles );
 		}
 		self::$hasSetup = true;
-		echo round(memory_get_usage()/1048576,2) . "MiB used - before\n";
+		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - before\n";
 	}
 
 	public function tearDown() {
 		parent::tearDown();
-		echo round(memory_get_usage()/1048576,2) . "MiB used - after\n";
+		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - after\n";
 	}
 
 	/**
