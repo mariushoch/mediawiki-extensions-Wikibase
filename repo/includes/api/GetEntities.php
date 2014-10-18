@@ -157,14 +157,20 @@ class GetEntities extends ApiWikibase {
 	 * @return ItemByTitleHelper
 	 */
 	private function getItemByTitleHelper() {
-		$siteLinkCache = WikibaseRepo::getDefaultInstance()->getStore()->newSiteLinkCache();
-		$siteStore = WikibaseRepo::getDefaultInstance()->getSiteStore();
-		return new ItemByTitleHelper(
-			$this->getResultBuilder(),
-			$siteLinkCache,
-			$siteStore,
-			$this->stringNormalizer
-		);
+		static $itemByTitleHelper = null;
+
+		if ( !$itemByTitleHelper ) {
+			$siteLinkCache = WikibaseRepo::getDefaultInstance()->getStore()->newSiteLinkCache();
+			$siteStore = WikibaseRepo::getDefaultInstance()->getSiteStore();
+			$itemByTitleHelper = new ItemByTitleHelper(
+				$this->getResultBuilder(),
+				$siteLinkCache,
+				$siteStore,
+				$this->stringNormalizer
+			);
+		}
+
+		return $itemByTitleHelper;
 	}
 
 	/**
