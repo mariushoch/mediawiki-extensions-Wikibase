@@ -70,7 +70,6 @@ class GetEntities extends ApiWikibase {
 		);
 
 		$this->siteLinkGroups = $wikibaseRepo->getSettings()->getSetting( 'siteLinkGroups' );
-		$this->entityRevisionLookup = $wikibaseRepo->getEntityRevisionLookup( 'uncached' );
 	}
 
 	/**
@@ -270,7 +269,7 @@ class GetEntities extends ApiWikibase {
 			foreach ( $params['languages'] as $languageCode ) {
 				// $languageCode is already filtered as valid ones
 				$languages[$languageCode] = $this->languageFallbackChainFactory
-					->newFromContextAndLanguageCode( $this, $languageCode );
+					->newFromContextAndLanguageCode( ( clone $this->getContext() ), $languageCode );
 			}
 		} else {
 			$languages = $params['languages'];
