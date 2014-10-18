@@ -25,7 +25,9 @@ abstract class WikibaseApiTestCase extends ApiTestCase {
 	protected static $token = null;
 
 	protected function setUp() {
+		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - before 0\n";
 		parent::setUp();
+		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - before 1\n";
 
 		static $isSetup = false;
 
@@ -37,6 +39,7 @@ abstract class WikibaseApiTestCase extends ApiTestCase {
 		);
 
 		$this->setMwGlobals( 'wgUser', self::$users['wbeditor']->user );
+		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - before 2\n";
 
 		if ( !$isSetup ) {
 			$sitesTable = WikibaseRepo::getDefaultInstance()->getSiteStore();
@@ -47,6 +50,7 @@ abstract class WikibaseApiTestCase extends ApiTestCase {
 
 			$isSetup = true;
 		}
+		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - before 3\n";
 
 		//TODO: preserve session and token between calls?!
 		self::$loginSession = false;

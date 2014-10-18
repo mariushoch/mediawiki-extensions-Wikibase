@@ -29,20 +29,12 @@ class GetEntitiesTest extends WikibaseApiTestCase {
 	private static $usedHandles = array( 'StringProp', 'Berlin', 'London', 'Oslo', 'Guangzhou', 'Empty' );
 
 	public function setup() {
-		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - before 0\n";
 		parent::setup();
-		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - before 1\n";
 
 		if( !isset( self::$hasSetup ) ){
 			$this->initTestEntities( self::$usedHandles );
 		}
 		self::$hasSetup = true;
-		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - before 2\n";
-	}
-
-	public function tearDown() {
-		parent::tearDown();
-		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - after\n";
 	}
 
 	/**
