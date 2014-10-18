@@ -70,6 +70,7 @@ class GetEntities extends ApiWikibase {
 		);
 
 		$this->siteLinkGroups = $wikibaseRepo->getSettings()->getSetting( 'siteLinkGroups' );
+		$this->entityRevisionLookup = $wikibaseRepo->getEntityRevisionLookup( 'uncached' );
 	}
 
 	/**
@@ -157,20 +158,14 @@ class GetEntities extends ApiWikibase {
 	 * @return ItemByTitleHelper
 	 */
 	private function getItemByTitleHelper() {
-		static $itemByTitleHelper = null;
-
-		if ( !$itemByTitleHelper ) {
-			$siteLinkCache = WikibaseRepo::getDefaultInstance()->getStore()->newSiteLinkCache();
-			$siteStore = WikibaseRepo::getDefaultInstance()->getSiteStore();
-			$itemByTitleHelper = new ItemByTitleHelper(
-				$this->getResultBuilder(),
-				$siteLinkCache,
-				$siteStore,
-				$this->stringNormalizer
-			);
-		}
-
-		return $itemByTitleHelper;
+		$siteLinkCache = WikibaseRepo::getDefaultInstance()->getStore()->newSiteLinkCache();
+		$siteStore = WikibaseRepo::getDefaultInstance()->getSiteStore();
+		return new ItemByTitleHelper(
+			$this->getResultBuilder(),
+			$siteLinkCache,
+			$siteStore,
+			$this->stringNormalizer
+		);
 	}
 
 	/**
