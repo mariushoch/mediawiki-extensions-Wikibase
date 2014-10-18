@@ -57,6 +57,15 @@ abstract class WikibaseApiTestCase extends ApiTestCase {
 		self::$token = false;
 	}
 
+
+	protected function tearDown() {
+		parent::tearDown();
+		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - after 0\n"
+		ApiTestCase::$users = array();
+		echo $this->getName() . ': ' . round(memory_get_usage()/1048576,2) . "MiB used - after 1\n";
+	}
+
+
 	/**
 	 * Performs a login, if necessary, and returns the resulting session.
 	 */
