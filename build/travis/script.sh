@@ -2,10 +2,6 @@
 
 set -x
 
-cd ../phase3/tests/phpunit
+cd ../phase3/
 
-php phpunit.php --group Wikibase,Purtle
-
-cd ../../extensions/Wikibase
-
-composer test
+cat vendor/composer/autoload_classmap.php
