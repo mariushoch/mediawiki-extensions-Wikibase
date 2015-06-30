@@ -19,7 +19,7 @@ tar -zxf $MW.tar.gz
 mv mediawiki-$MW phase3
 
 cd phase3
-#composer self-update
+composer self-update
 composer install -o --verbose
 ls -l vendor/
 
