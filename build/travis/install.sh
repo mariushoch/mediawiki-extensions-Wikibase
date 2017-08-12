@@ -27,6 +27,10 @@ if [ $? -gt 0 ]; then
 	composer install
 fi
 
+cat ./vendor/phpunit/phpunit/src/TextUI/ResultPrinter.php | sed "s/\$this->writeProgress('.');/\$this->writeProgress('🐐');/" | tee ./vendor/phpunit/phpunit/src/TextUI/ResultPrinter.php > /dev/null
+
+php -l ./vendor/phpunit/phpunit/src/TextUI/ResultPrinter.php
+
 mysql -e 'create database its_a_mw;'
 php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
 
