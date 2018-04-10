@@ -39,9 +39,9 @@ For ease of access and convinence Wikibase Lua library provides access to aspect
 Gets a [[#mw.wikibase.entity|mw.wikibase.entity]] table with data of the Wikibase item requested by id. If no id was given, the item connected to the current page will be returned. Requesting an item by id is only supported if arbitrary access is enabled.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getEntity( 'Q42' ) -- Returns a mw.wikibase.entity table for the Item with the id Q42
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getEntityIdForCurrentPage ===
 <code>wikibase.getEntityIdForCurrentPage()</code><br>
@@ -49,18 +49,18 @@ mw.wikibase.getEntity( 'Q42' ) -- Returns a mw.wikibase.entity table for the Ite
 Gets the Item id of the item connected to the current page.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getEntityIdForCurrentPage() -- Returns the Item id as string, like "Q42"
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getEntityIdForTitle ===
 <code>wikibase.getEntityIdForTitle( pageTitle )</code><br>
 <code>wikibase.getEntityIdForTitle( pageTitle, globalSiteId )</code><br>
 Takes a page title string either in the local wiki or an other wiki on the same cluster specified by the global site identifier, and returns the item ID connected via a sitelink, if one exists. Returns nil if there's no linked item.
 
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getEntityIdForTitle( 'Berlin' ) -- Returns the ID of the item linked with the "Berlin" page, like "Q64"
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getEntityUrl ===
 <code>wikibase.getEntityUrl()</code><br>
@@ -69,9 +69,9 @@ Takes an entity ID and returns the canonical URL to the entity in the repo.
 
 If no ID was specified, the URL of the item connected to the current page will be returned, if the page is connected.
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getEntityUrl( 'Q42' ) -- Returns the URL to the item as a string, like "https://www.wikidata.org/wiki/Special:EntityPage/Q42".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getLabel ===
 <code>wikibase.getLabel()</code><br>
@@ -81,9 +81,9 @@ Takes an item ID and returns the label in the language of the local Wiki.
 If no ID was specified, then the label of the item connected to the current page will be returned, if the page is indeed connected and a label exists. The label will either be in the Wiki's language (on monolingual wikis) or the user's language (on multilingual Wikis), furthermore language fallbacks will be applied. See also [[#mw.wikibase.getLabelWithLang|<code>mw.wikibase.getLabelWithLang</code>]].
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getLabel( 'Q42' ) -- Returns the label of the item as a string, like "Berlin".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getLabelWithLang ===
 <code>wikibase.getLabelWithLang()</code><br>
@@ -91,9 +91,9 @@ mw.wikibase.getLabel( 'Q42' ) -- Returns the label of the item as a string, like
 Like [[#mw.wikibase.getLabel|<code>mw.wikibase.getLabel</code>]], but has the language the returned label is in as an additional second return parameter.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 local label, lang = mw.wikibase.getLabelWithLang( 'Q42' ) -- label contains the text of the label. lang is the language the returned label is in, like "de".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getLabelByLang ===
 <code>wikibase.getLabelByLang( id, languageCode )</code><br>
@@ -102,9 +102,9 @@ Get the label from an entity for a specific language, returns the label as strin
 '''Note''': This should not be used to get the label in the user's language on multilingual wikis, use [[#mw.wikibase.getLabel|<code>mw.wikibase.getLabel</code>]] for that if by any means possible.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getLabelByLang( 'Q42', 'es' ) -- Returns the Spanish label of the item as a string, like "Berlín".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getSitelink ===
 <code>wikibase.getSitelink( itemId )</code><br>
@@ -114,9 +114,9 @@ Takes an item ID and returns the title of the corresponding page title on the lo
 When <code>globalSiteId</code> is given, the page title on the specified wiki is returned, rather than the one on the local wiki.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getSitelink( 'Q42' ) -- Returns the given item's page title in the current Wiki as a string, like "Berlin".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getDescription ===
 <code>wikibase.getDescription()</code><br>
@@ -126,9 +126,9 @@ Takes an item ID and returns the description in the language of the local Wiki.
 If no ID was specified, then the description of the item connected to the current page will be returned, if the page is indeed connected and a description exists. The description will either be in the Wiki's language (on monolingual wikis) or the user's language (on multilingual Wikis), furthermore language fallbacks will be applied. See also [[#mw.wikibase.getDescriptionWithLang|<code>mw.wikibase.getDescriptionWithLang</code>]].
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getDescription( 'Q42' ) -- Returns the description of the item as a string, like "capital of Germany".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getDescriptionWithLang ===
 <code>wikibase.getDescriptionWithLang()</code><br>
@@ -136,119 +136,119 @@ mw.wikibase.getDescription( 'Q42' ) -- Returns the description of the item as a 
 Like [[#mw.wikibase.getDescription|<code>mw.wikibase.getDescription</code>]], but has the language the returned description is in as an additional second return parameter.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 local description, lang = mw.wikibase.getDescriptionWithLang( 'Q42' ) -- description contains the text of the description. lang is the language the returned description is in, like "de".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.isValidEntityId ===
 <code>wikibase.isValidEntityIds( entityIdSerialization )</code><br>
 Returns whether this a valid entity id. This does not check whether the entity in question exists, it just checks that the entity id in question is valid.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.isValidEntityId( 'Q12' ) -- Returns true.
 mw.wikibase.isValidEntityId( 'Q0-invalid-id' ) -- Returns false.
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entityExists ===
 <code>wikibase.entityExists( id )</code><br>
 Returns whether the entity in question exists.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.entityExists( 'Q42' ) -- Returns true, if the Item Q42 exists.
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.renderSnak ===
 <code>wikibase.renderSnak( snakSerialization )</code><br>
 Renders a serialized Snak value to wikitext escaped plain text. This is useful for displaying References or Qualifiers.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 local entity = mw.wikibase.getEntity()
 local snak = entity['claims']['P342'][1]['qualifiers']['P342'][1]
 
 mw.wikibase.renderSnak( snak ) -- Returns the given Snak value formatted as wikitext escaped plain text.
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.formatValue ===
 <code>wikibase.formatValue( snakSerialization )</code><br>
 Renders a serialized Snak value to rich wikitext. This is useful for displaying References or Qualifiers.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 local entity = mw.wikibase.getEntity()
 local snak = entity['claims']['P342'][1]['qualifiers']['P342'][1]
 
 mw.wikibase.formatValue( snak ) -- Returns the given Snak value formatted as rich wikitext.
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.renderSnaks ===
 <code>wikibase.renderSnaks( snaksSerialization )</code><br>
 Renders a list of serialized Snak values to wikitext escaped plain text. This is useful for displaying References or Qualifiers.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 local entity = mw.wikibase.getEntity()
 local snaks = entity['claims']['P342'][1]['qualifiers']
 
 mw.wikibase.renderSnaks( snaks ) -- Returns the given Snak values formatted as wikitext escaped plain text.
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.formatValues ===
 <code>wikibase.formatValues( snaksSerialization )</code><br>
 Renders a list of serialized Snak values to rich wikitext. This is useful for displaying References or Qualifiers.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 local entity = mw.wikibase.getEntity()
 local snaks = entity['claims']['P342'][1]['qualifiers']
 
 mw.wikibase.formatValues( snaks ) -- Returns the given Snak values formatted as rich wikitext.
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.resolvePropertyId ===
 <code>wikibase.resolvePropertyId( propertyLabelOrId )</code><br>
 Returns a property id for the given label or id. This allows using the property's labels instead of ids in all places. If no property was found for the label, a nil value is returned.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.resolvePropertyId( 'father' ) -- Returns the property id for the property with label "father", like "P12".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getPropertyOrder ===
 <code>wikibase.getPropertyOrder()</code><br>
 Returns a table with the order of property IDs as provided by the page MediaWiki:Wikibase-SortedProperties. If the page does not exist, a nil value is returned.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getPropertyOrder() -- Returns a table with the order of the property IDs such as { ['P1'] = 0, ['P31'] = 1, ['P5'] = 2 }
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.orderProperties ===
 <code>wikibase.orderProperties( tableOfPropertyIds )</code><br>
 Returns a table with the given property IDs ordered according to the page MediaWiki:Wikibase-SortedProperties.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 propertyIds = { 'P1', 'P5', 'P31' }
 mw.wikibase.orderProperties( propertyIds ) -- Returns a table with ordered property IDs such as { 'P5', 'P1', 'P31' }
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getBestStatements ===
 <code>wikibase.getBestStatements( entityId, propertyId )</code><br>
 Returns a table with the "best" statements matching the given property ID on the given entity ID. The definition of "best" is that the function will return "preferred" statements, if there are any, otherwise "normal" ranked statements. It will never return "deprecated" statements. This is what you usually want when surfacing values to an ordinary reader.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getBestStatements( 'Q1', 'P12' ) -- Returns a table containing the serialization of P12 statements from Q1
-</source>
+</syntaxhighlight>
 
 ==== Structure ====
 The returned structure is very similar to the [https://www.mediawiki.org/wiki/Wikibase/DataModel/JSON#Claims_and_Statements Wikibase DataModel JSON schema for statements], and equivalent to the statement structures in [[#mw.wikibase.entity|mw.wikibase.entity]].
 
 An example might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.logObject( mw.wikibase.getBestStatements( 'Q16354758', 'P1324' ) )
 
 {
@@ -328,16 +328,16 @@ mw.logObject( mw.wikibase.getBestStatements( 'Q16354758', 'P1324' ) )
     ["type"] = "statement",
   },
 }
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.getAllStatements ===
 <code>wikibase.getAllStatements( entityId, propertyId )</code><br>
 Returns a table with all statements (including all ranks, even "deprecated") matching the given property ID on the given entity ID.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 mw.wikibase.getAllStatements( 'Q1', 'P12' ) -- Returns a table containing the serialization of P12 statements from Q1
-</source>
+</syntaxhighlight>
 
 The structure of the returned table is identical to those obtained via [[#mw.wikibase.getBestStatements|mw.wikibase.getBestStatements]].
 
@@ -362,10 +362,10 @@ Alias for [[#mw.wikibase.getSitelink|mw.wikibase.getSitelink]].
 Functions documented as <code>mw.wikibase.entity.name</code> are available on the global <code>mw.wikibase.entity</code> table; functions documented as <code>mw.wikibase.entity:name</code> are methods of an <code>mw.wikibase.entity</code> object (see [[#mw.wikibase.entity.create|<code>mw.wikibase.entity.create</code>]]).
 
 === Structure ===
-The structure of this is very similar to the [https://www.mediawiki.org/wiki/Wikibase/DataModel/JSON Wikibase DataModel JSON] schema. This can be handily viewed with <source lang="lua">mw.logObject( mw.wikibase.getEntity( 'Q123' ) )</source> in the Scribunto '''Debug console'''.
+The structure of this is very similar to the [https://www.mediawiki.org/wiki/Wikibase/DataModel/JSON Wikibase DataModel JSON] schema. This can be handily viewed with <syntaxhighlight lang="lua">mw.logObject( mw.wikibase.getEntity( 'Q123' ) )</syntaxhighlight> in the Scribunto '''Debug console'''.
 
 The following is a (heavily shortened) example, from the Wikidata Item about Wikibase:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 {
   ["id"] = "Q16354758",
   ["type"] = "item",
@@ -421,16 +421,16 @@ The following is a (heavily shortened) example, from the Wikidata Item about Wik
     },
   },
 }
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getId ===
 <code>entity:getId()</code><br>
 Returns the ID of the entity, as a string.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getId() -- Returns a string like "Q123"
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getLabel ===
 <code>entity:getLabel()</code><br>
@@ -438,9 +438,9 @@ entity:getId() -- Returns a string like "Q123"
 Returns the label of the entity in the language given as <code>langCode</code> or in the Wiki's content language (on monolingual wikis) or the user's language (on multilingual wikis). See also [[#mw.wikibase.entity:getLabelWithLang|<code>mw.wikibase.entity:getLabelWithLang</code>]].
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getLabel( 'de' ) -- Returns a string like "Berlin"
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getDescription ===
 <code>entity:getDescription()</code><br>
@@ -448,9 +448,9 @@ entity:getLabel( 'de' ) -- Returns a string like "Berlin"
 Returns the description of the entity in the language given as <code>langCode</code> or in the Wiki's content language (on monolingual wikis) or the user's language (on multilingual wikis). See also [[#mw.wikibase.entity:getDescriptionWithLang|<code>mw.wikibase.entity:getDescriptionWithLang</code>]].
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getDescription( 'de' ) -- Returns a string like "capital and city-state of Germany"
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getLabelWithLang ===
 <code>entity:getLabelWithLang()</code><br>
@@ -458,9 +458,9 @@ entity:getDescription( 'de' ) -- Returns a string like "capital and city-state o
 Like [[#mw.wikibase.entity:getLabel|<code>mw.wikibase.entity:getLabel</code>]], but has the language the returned label is in as an additional second return parameter.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 local label, lang = entity:getLabelWithLang( 'de' ) -- label contains the text of the label. lang is the language the returned label is in, like "de".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getDescriptionWithLang ===
 <code>entity:getDescriptionWithLang()</code><br>
@@ -468,9 +468,9 @@ local label, lang = entity:getLabelWithLang( 'de' ) -- label contains the text o
 Like [[#mw.wikibase.entity:getDescription|<code>mw.wikibase.entity:getDescription</code>]], but has the language the returned description is in as an additional second return parameter.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 local desc, lang = entity:getDescriptionWithLang( 'de' ) -- desc contains the text of the description. lang is the language the returned description is in, like "de".
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getSitelink ===
 <code>entity:getSitelink()</code><br>
@@ -478,19 +478,19 @@ local desc, lang = entity:getDescriptionWithLang( 'de' ) -- desc contains the te
 Get the title with which the entity is linked in the current Wiki. If <code>globalSiteId</code> is given, the title the item is linked with in the given Wiki will be returned.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getSitelink() -- Returns the item's page title in the current Wiki as a string, like "Moskow"
 entity:getSitelink( 'ruwiki' ) -- Returns the item's page title in the Russian Wikipedia as a string, like "Москва"
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getProperties ===
 <code>entity:getProperties()</code><br>
 Get a table with all property ids attached to the item.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getProperties() -- Returns a table like: { "P123", "P1337" }
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getBestStatements ===
 <code>entity:getBestStatements( propertyIdOrLabel )</code><br>
@@ -499,28 +499,28 @@ This includes all statements with rank "preferred" or, if no preferred ones exis
 Statements with rank "deprecated" are never included.
 
 An example call with property ID might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getBestStatements( 'P12' ) -- Returns a table containing the serialization of the best statements with the property id P12
-</source>
+</syntaxhighlight>
 
 An example call with property label might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getBestStatements( 'instance of' ) -- Returns a table containing the serialization of the best statements with the "instance of" property
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:getAllStatements ===
 <code>entity:getAllStatements( propertyIdOrLabel )</code><br>
 Returns a table with all statements (including all ranks, even "deprecated") matching the given property ID or property label.
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getAllStatements( 'P12' ) -- Returns a table containing the serialization of P12 statements
-</source>
+</syntaxhighlight>
 
 An example call with property label might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 entity:getAllStatements( 'instance of' ) -- Returns a table containing the serialization of the statements with the "instance of" property
-</source>
+</syntaxhighlight>
 
 === mw.wikibase.entity:formatPropertyValues ===
 <code>entity:formatPropertyValues( propertyLabelOrId )</code><br>
@@ -529,7 +529,7 @@ Get the values of the Statements with the given property (which is either identi
 Alternatively a table with acceptable ranks can be given as second parameter (a mapping table with all ranks can be found in [[#mw.wikibase.entity.claimRanks|<code>mw.wikibase.entity.claimRanks</code>]]).
 
 An example call might look like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 -- Return a table like: { value = "Formatted claim value", label = "Label of the Property" }
 entity:formatPropertyValues( 'P12' )
 
@@ -538,7 +538,7 @@ entity:formatPropertyValues( 'father' )
 
 -- Return the normal ranked claims with the property Id 42 (same format as above)
 entity:formatPropertyValues( 'P42', { mw.wikibase.entity.claimRanks.RANK_NORMAL } )
-</source>
+</syntaxhighlight>
 
 <code>value</code> is an empty string (<nowiki>''</nowiki>) if there's no statement with the given property on the entity. <code>value</code> will be nil if the given property doesn't exist.
 
@@ -558,10 +558,10 @@ The available ranks are:
 # RANK_DEPRECATED
 
 This can for example be used like this:
-<source lang="lua">
+<syntaxhighlight lang="lua">
 -- Return the normal ranked claims with the property id P5
 entity:formatPropertyValues( 'P5', { mw.wikibase.entity.claimRanks.RANK_NORMAL } )
 
  -- Return all claims with id P123 (as the table passed contains all possible claim ranks)
 entity:formatPropertyValues( 'P123', mw.wikibase.entity.claimRanks )
-</source>
+</syntaxhighlight>
