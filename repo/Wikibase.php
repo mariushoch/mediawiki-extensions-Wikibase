@@ -281,7 +281,8 @@ call_user_func( function() {
 				},
 				function ( $module ) use ( $apiHelperFactory ) {
 					return $apiHelperFactory->getEntitySavingHelper( $module );
-				}
+				},
+				$wikibaseRepo->inFederatedPropertyMode()
 			);
 		}
 	];
